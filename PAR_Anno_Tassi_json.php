@@ -13,7 +13,7 @@ if (!$connection) {      //se la connessione non è avvenuta stampiamo un messag
 if ($_GET['Anno'] !== null) {    //se effettuiamo la ricerca secondo il route_id
   $sql = "SELECT SUP.`Anno`,SUP.`Regione`,SUP.`Tasso di scolarizzazione superiore` as `Tasso Superiori` ,UNI.`Tasso femmine e maschi` as `Tasso Universitario` 
           FROM `Tasso Superiore` as SUP INNER JOIN `Tasso Universitario` as UNI on SUP.Regione = UNI.Regione AND SUP.Anno = UNI.Anno 
-          WHERE UNI.Anno = ".$_GET['Anno'];    //query che andremo ad eseguire
+          WHERE UNI.Anno = ".$_GET['Anno'] . " ORDER BY SUP.`Regione`";    //query che andremo ad eseguire
 } else {
   http_response_code(400);        //modifichiamo il codice di risposta di HTTP impostandolo 400
   exit;    //terminiamo l'esec. dello script
@@ -39,8 +39,10 @@ if (mysqli_real_query($connection, $sql)) {                  //tramite questa fu
   http_response_code(400);        //modifichiamo il codice di risposta di HTTP impostandolo 400
   exit;                           //terminiamo l'esecuzione dello script
 }
+
 $elenco_Tassi_Json = json_encode($final_array);       //codifichiamo l'array in json per trasferimento dati tramite richiesta HTTP
 mysqli_free_result($result);    //questa funzione serve per indicare che il risultato della query non ci serve più e liberare la memoria
-mysqli_close($connection);            //questa funzione termina la connessione col db
+mysqli_close($connection); //questa funzione termina la connessione col db
+
 echo "$elenco_Tassi_Json";
-?>
+?>
