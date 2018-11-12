@@ -11,25 +11,32 @@ if (!$connection) {      //se la connessione non è avvenuta stampiamo un messag
   exit;
 }
 if ($_GET['Anno'] !== null) {    //se effettuiamo la ricerca secondo il route_id
-  $sql = "SELECT SUP.`Anno`,SUP.`Regione`,SUP.`Tasso di scolarizzazione superiore` as `Tasso Superiori` ,UNI.`Tasso femmine e maschi` as `Tasso Universitario` 
-          FROM `Tasso Superiore` as SUP INNER JOIN `Tasso Universitario` as UNI on SUP.Regione = UNI.Regione AND SUP.Anno = UNI.Anno 
-          WHERE UNI.Anno = ".$_GET['Anno'] . " ORDER BY SUP.`Regione`";    //query che andremo ad eseguire
+  $Anno = "WHERE UNI.Anno = ".$_GET['Anno'] . " ";    //query che andremo ad eseguire
 } else {
-  http_response_code(400);        //modifichiamo il codice di risposta di HTTP impostandolo 400
-  exit;    //terminiamo l'esec. dello script
+  $Anno = "";
+  //http_response_code(400);        //modifichiamo il codice di risposta di HTTP impostandolo 400
+  //exit;    //terminiamo l'esec. dello script
 }
+
+
+$sql = "SELECT SUP.`Anno`,SUP.`Regione`,SUP.`Tasso di scolarizzazione superiore` as `Tasso Superiori` ,UNI.`Tasso femmine e maschi` as `Tasso Universita` 
+FROM `Tasso Superiore` as SUP INNER JOIN `Tasso Universitario` as UNI on SUP.Regione = UNI.Regione AND SUP.Anno = UNI.Anno ". $Anno ."
+ORDER BY SUP.`Anno`,SUP.`Regione`"; 
+
 $final_array = array();    //creiamo array vuoto;
 if (mysqli_real_query($connection, $sql)) {                  //tramite questa funz. eseguiamo la query memorizz. nella variabile
   if ($result = mysqli_use_result($connection)) {              //tramite questa funzione preleviamo l'ultimo risultato (della query) eseguito sul database $connection
     while ($row = mysqli_fetch_row($result)) {           //tramite questa funzione analizziamo tutte le righe (una dopo l'altra) partendo dalla 1° fino all'ultima, fermandoci appena viene restituito 'false'
+      /* memorizziamo nell'array le info che ci interessano */
       $final_array[] = array(
                 "Anno" => "$row[0]",
-                "Regione" => "$row[1]",    //memorizziamo nell'array le info che ci interessano
-                "Tasso Universitario" => "$row[2]",
-                "Tasso Superiori" => "$row[3]"
+                "Regione" => "$row[1]",
+                "Tasso Superiori" => "$row[2]",    
+                "Tasso Universita" => "$row[3]"
+                
               );
     }
-    //se l'array risulta essere vuoto
+    /* se l'array risulta essere vuoto */
     if (count($final_array) == 0) {
       http_response_code(400);        //modifichiamo il codice di risposta di HTTP impostandolo 400
       exit;                           //terminiamo l'esecuzione dello script
@@ -45,4 +52,4 @@ mysqli_free_result($result);    //questa funzione serve per indicare che il risu
 mysqli_close($connection); //questa funzione termina la connessione col db
 
 echo "$elenco_Tassi_Json";
-?>
+?>
