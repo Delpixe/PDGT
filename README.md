@@ -9,7 +9,7 @@
 Usare questa API per richiedere al server la visualizzazione completa di tutti i tassi di scolarizzazione delle superiori suddiviso per anno e regione presenti nel DB.
 Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha successo restituirà la lista dei vaporetti in formato JSON, altrimenti restituirà lo stato HTTP #400.
 
-*Esempio di lista Json restituita*
+***Esempio di lista Json restituita***
 ---
 [
     {
@@ -30,7 +30,7 @@ Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha s
 Usare questa API per richiedere al server la visualizzazione completa di tutti i tassi di scolarizzazione delle università suddiviso per anno e regione presenti nel DB.
 Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha successo restituirà la lista dei vaporetti in formato JSON, altrimenti restituirà lo stato HTTP #400.
 
-*Esempio di lista Json restituita*
+***Esempio di lista Json restituita***
 ---
 [
     {
@@ -105,7 +105,7 @@ Usare questa API per effettuare una ricerca specifica nel database, questo file 
 </table>
 
 
-*Esempio di lista Json restituita*
+***Esempio di lista Json restituita***
 ---
 [
     {
