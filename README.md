@@ -1,16 +1,16 @@
 # Progetto di PDGT
-<br />Progetto d'esame per PDGT A.A. 2017/2018<br />
-<br />Studente:   Mattia Del Papa<br />
-<br />Matricola:  272016<br />
+Progetto d'esame per PDGT A.A. 2017/2018
+Studente:   Mattia Del Papa
+Matricola:  272016
 
 # Documentazione API
 
-## stampa_db_tasso_sup_json 
+**stampa_db_tasso_sup_json** 
 Usare questa API per richiedere al server la visualizzazione completa di tutti i tassi di scolarizzazione delle superiori suddiviso per anno e regione presenti nel DB.
 Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha successo restituirà la lista dei vaporetti in formato JSON, altrimenti restituirà lo stato HTTP #400.
 
-Esempio di lista Json restituita
----
+Esempio di lista JSON restituita
+```
 [
     {
         "Anno":"2004",
@@ -24,14 +24,14 @@ Esempio di lista Json restituita
     }
     etc.
 ]
----
+```
 
-## stampa_db_tasso_univ_json
+**stampa_db_tasso_univ_json**
 Usare questa API per richiedere al server la visualizzazione completa di tutti i tassi di scolarizzazione delle università suddiviso per anno e regione presenti nel DB.
 Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha successo restituirà la lista dei vaporetti in formato JSON, altrimenti restituirà lo stato HTTP #400.
 
 Esempio di lista Json restituita
----
+```
 [
     {
         "Anno":"2004",
@@ -48,9 +48,9 @@ Esempio di lista Json restituita
         "Tasso femmine e maschi":"12.8"
     }
 ]
----
+```
 
-## PAR_Anno_Tassi_json
+**PAR_Anno_Tassi_json**
 Usare questa API per effettuare una ricerca specifica nel database, questo file può richiedere un parametro, se si vuole un dato più pulito e filtrato, o può tirare su tutti i dati ordinati per Anno e Regione. Se la richiesta HTTP ha successo restituisce la lista dei tassi di scolarizzazione universitario e superiore trovati in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
 <table>
@@ -106,7 +106,7 @@ Usare questa API per effettuare una ricerca specifica nel database, questo file 
 
 
 Esempio di lista Json restituita
----
+```
 [
     {
         "Anno":"2004",
@@ -121,7 +121,7 @@ Esempio di lista Json restituita
         "Tasso Universita":"13.0"
     }
 ]
----
+```
 
 ## Una pillola di codice
 
