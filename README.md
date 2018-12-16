@@ -5,11 +5,11 @@
 
 # Documentazione API
 
-### stampa_db_tasso_sup_json 
+## stampa_db_tasso_sup_json 
 Usare questa API per richiedere al server la visualizzazione completa di tutti i tassi di scolarizzazione delle superiori suddiviso per anno e regione presenti nel DB.
 Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha successo restituirà la lista dei vaporetti in formato JSON, altrimenti restituirà lo stato HTTP #400.
 
-*Esempio di lista Json restituita*
+Esempio di lista Json restituita
 ---
 [
     {
@@ -26,11 +26,11 @@ Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha s
 ]
 ---
 
-### stampa_db_tasso_univ_json
+## stampa_db_tasso_univ_json
 Usare questa API per richiedere al server la visualizzazione completa di tutti i tassi di scolarizzazione delle università suddiviso per anno e regione presenti nel DB.
 Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha successo restituirà la lista dei vaporetti in formato JSON, altrimenti restituirà lo stato HTTP #400.
 
-*Esempio di lista Json restituita*
+Esempio di lista Json restituita
 ---
 [
     {
@@ -50,7 +50,7 @@ Questo file .php non richiede inserimento di parametri. Se la richesta HTTP ha s
 ]
 ---
 
-### PAR_Anno_Tassi_json
+## PAR_Anno_Tassi_json
 Usare questa API per effettuare una ricerca specifica nel database, questo file può richiedere un parametro, se si vuole un dato più pulito e filtrato, o può tirare su tutti i dati ordinati per Anno e Regione. Se la richiesta HTTP ha successo restituisce la lista dei tassi di scolarizzazione universitario e superiore trovati in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
 <table>
@@ -105,7 +105,7 @@ Usare questa API per effettuare una ricerca specifica nel database, questo file 
 </table>
 
 
-*Esempio di lista Json restituita*
+Esempio di lista Json restituita
 ---
 [
     {
@@ -135,7 +135,7 @@ FROM `Tasso Superiore` as SUP INNER JOIN `Tasso Universitario` as UNI on SUP.Reg
 . $Anno . " ORDER BY SUP.`Regione`";
 ```
 
-## Documentazione CLIENT
+# Documentazione CLIENT
 
 Il client, sviluppato per interagire con le API, è scritto in linguaggio PHP ed è stato ottimizzato per un'esecuzione da CLI. 
 Una volta aperto da riga di comando, il programma stampa a video un breve messaggio di introduzione (info programmatore e info del client) seguito da un menù di selezione riguardante le varie funzioni messe a disposizione dal client, ognuna delle quali selezionabile inserendo il numero che le precede ed identifica, seguito dal tasto 'invio'. Selezionando le opzioni '1' e '2' viene stampata a schermo la lista completa dei tassi superiori o dei tassi universitari, rispettivamente, le cui informazioni vengono prelevate tramite richiesta HTTP alle due API 'stampa_db_tasso_sup_json.php' e 'stampa_db_tasso_univ_json.php'. Premendo invece il pulsante '3' si entra in un secondo menù, dove poter scegliere secondo quale anno gli 11 possibili effettuare la ricerca nel database, uno dei quali è la possibilità di non effettuare filtri per visualizzare tutto. Una volta scelto un criterio ed inserita la stringa secondo cui fare il confronto, il client stampa a schermo le informazioni avute in risposta dall'API 'PAR_Anno_Tassi_json.php'. Tramite l'opzione '4' del menù viene eseguita una richiesta HTTP all'API 'api_esterno.php', il cui messaggio di ritorno contenente le informazioni 
@@ -145,8 +145,7 @@ Una volta aperto da riga di comando, il programma stampa a video un breve messag
 L'utente può effettuare tutte le interrogazioni che vuole con il client, una volta trovata l'informazione che stava cercando gli basterà inserire 
 il numero '0' o premendo semplicemente il tasto invio dal menù principale per terminare l'esecuzione di quest'ultimo, confermata da un opportuno messaggio.
 
-
-## Che cosa ho utilizzato per sviluppare:
+# Che cosa ho utilizzato per sviluppare:
 - http://www.datiopen.it 
 - Visual studio Code
 - Altersito
