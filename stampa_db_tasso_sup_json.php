@@ -1,5 +1,5 @@
 <?php
-/* API per la stampa di tutti i vaporetti */
+/* API per la stampa di tutti i tassi supeririori */
 require 'config.php';    //includiamo file di configurazione
 header("Content-Type: application/json; charset=UTF-8");   /* info passate tramite header per indicare la tipologia di valore
                                                               ritornato in seguito all'elaborazione del codice della pagina web */

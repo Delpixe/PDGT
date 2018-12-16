@@ -59,7 +59,7 @@ function stampa_tasso_superiore($http_code, $response) {
         //se ritorna un codice di errore dalla richiesta HTTP
         echo "\nATTENZIONE ---> La richiesta HTTP ha restituito il codice d'errore #{$http_code}." . PHP_EOL;
     }    //end if-else
-  }    //end function    //end function
+  }    //end function
 
 function stampa_tassi($http_code, $response) {
     if ($http_code == 200) {
@@ -89,4 +89,15 @@ function stampa_tassi($http_code, $response) {
     }    //end if-else
 }    //end function
   
+function api_esterna($http_code, $response){
+  if ($http_code == 200) {
+      $data = json_decode($response, true);
+      echo "\n\n----------------------\n";
+      echo "| API ESTERNA |";
+      echo "\n----------------------\n";
+      //foreach ($data as $info) {
+
+      //}
+  }
+}
 ?>

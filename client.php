@@ -19,8 +19,8 @@ do {
   echo "\n\nSelezionare la richiesta da eseguire al database: \n";
   echo "\t[1] Tasso Universitari.\n";
   echo "\t[2] Tasso Superirori.\n";
-  echo "\t[3] Tassi Università e Superiori per Anno e Regione.\n\n";
-  //echo "\t[4] opzione4.\n";
+  echo "\t[3] Tassi Università e Superiori per Anno e Regione.\n";
+  echo "\t[4] Api esterna.\n\n";
   //echo "\t[5] opzione5.\n\n";
   echo "\t[0/INVIO] Chiusura del client.\n\n";
   $scelta1 = readline();    //acquisizione scelta dell'utente
@@ -114,6 +114,18 @@ do {
     //stampa ordinata delle info dei vaporetti
     stampa_tassi($http_code,$response);
   //TERMINE del codice eseguito con la seconda scelta del menù
+  }  elseif ($scelta1 === 4) {
+    //inizializzazione richiesta HTTP tramite CURL
+    $handle = curl_init('http://delpix.altervista.org/api_esterna.php');
+    //richiesta della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //stampa ordinata delle info dei tassi superiori
+    api_esterna($http_code,$response);
+  //TERMINE del codice eseguito con la terza scelta del menù
   }  elseif ($scelta1 === 0) {
     $chiudi_client = 0;    //impostando la variabile a 0 interrompiamo l'esecuzione del client
     echo "\n\nTerminazione corretta del client, arrivederci !\n\n";

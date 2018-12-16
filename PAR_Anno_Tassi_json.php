@@ -1,5 +1,5 @@
 <?php
-/* API per la stampa dei vaporetti filtrati secondo un criterio */
+/* API per la stampa dei tassi filtrati secondo l'anno */
 require 'config.php';    //includiamo file di configurazione
 header("Content-Type: application/json; charset=UTF-8");   /* info passate tramite header per indicare la tipologia di valore
                                                               ritornato in seguito all'elaborazione del codice della pagina web */
