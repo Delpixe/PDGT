@@ -123,6 +123,27 @@ Esempio di lista Json restituita
 ]
 ```
 
+**Chiamata ad API esterna**
+Usare questa API per effettuare una interrogazione ad una API pubblica (fornita da Hipolabs >https://github.com/toddmotto/public-apis/<), Se la richiesta HTTP ha successo restituisce la lista delle università italiane con dominio e pagina web in formato JSON, altrimenti ritorna lo stato HTTP #400.
+
+Esempio di lista Json restituita
+```
+[
+  {
+    "Nome Universita":"Pontificia Università S. Tommaso",
+    "Pagina Web":["http://www.angelicum.org/"],
+    "Dominio":["angelicum.org"]
+  },
+  {
+    "Nome Universita":"Pontificio Ateneo Antonianum",
+    "Pagina Web":["http://www.antonianum.ofm.org/"],
+    "Dominio":["antonianum.ofm.org"]
+  }
+]
+
+```
+
+
 ## Una pillola di codice
 
 **Esempi di codice scritto**
@@ -138,9 +159,7 @@ FROM `Tasso Superiore` as SUP INNER JOIN `Tasso Universitario` as UNI on SUP.Reg
 # Documentazione CLIENT
 
 Il client, sviluppato per interagire con le API, è scritto in linguaggio PHP ed è stato ottimizzato per un'esecuzione da CLI. 
-Una volta aperto da riga di comando, il programma stampa a video un breve messaggio di introduzione (info programmatore e info del client) seguito da un menù di selezione riguardante le varie funzioni messe a disposizione dal client, ognuna delle quali selezionabile inserendo il numero che le precede ed identifica, seguito dal tasto 'invio'. Selezionando le opzioni '1' e '2' viene stampata a schermo la lista completa dei tassi superiori o dei tassi universitari, rispettivamente, le cui informazioni vengono prelevate tramite richiesta HTTP alle due API 'stampa_db_tasso_sup_json.php' e 'stampa_db_tasso_univ_json.php'. Premendo invece il pulsante '3' si entra in un secondo menù, dove poter scegliere secondo quale anno gli 11 possibili effettuare la ricerca nel database, uno dei quali è la possibilità di non effettuare filtri per visualizzare tutto. Una volta scelto un criterio ed inserita la stringa secondo cui fare il confronto, il client stampa a schermo le informazioni avute in risposta dall'API 'PAR_Anno_Tassi_json.php'. Tramite l'opzione '4' del menù viene eseguita una richiesta HTTP all'API 'api_esterno.php', il cui messaggio di ritorno contenente le informazioni 
-
-??non so cosa metterci ??
+Una volta aperto da riga di comando, il programma stampa a video un breve messaggio di introduzione (info programmatore e info del client) seguito da un menù di selezione riguardante le varie funzioni messe a disposizione dal client, ognuna delle quali selezionabile inserendo il numero che le precede ed identifica, seguito dal tasto 'invio'. Selezionando le opzioni '1' e '2' viene stampata a schermo la lista completa dei tassi superiori o dei tassi universitari, rispettivamente, le cui informazioni vengono prelevate tramite richiesta HTTP alle due API 'stampa_db_tasso_sup_json.php' e 'stampa_db_tasso_univ_json.php'. Premendo invece il pulsante '3' si entra in un secondo menù, dove poter scegliere secondo quale anno gli 11 possibili effettuare la ricerca nel database, uno dei quali è la possibilità di non effettuare filtri per visualizzare tutto. Una volta scelto un criterio ed inserita la stringa secondo cui fare il confronto, il client stampa a schermo le informazioni avute in risposta dall'API 'PAR_Anno_Tassi_json.php'. Tramite l'opzione '4' del menù viene eseguita una richiesta HTTP all'API 'api_esterno.php', il cui messaggio di ritorno contenente le informazioni delle università italiane con il dominio e la pagina web a loro corellati.
 
 L'utente può effettuare tutte le interrogazioni che vuole con il client, una volta trovata l'informazione che stava cercando gli basterà inserire 
 il numero '0' o premendo semplicemente il tasto invio dal menù principale per terminare l'esecuzione di quest'ultimo, confermata da un opportuno messaggio.
@@ -151,3 +170,4 @@ il numero '0' o premendo semplicemente il tasto invio dal menù principale per t
 - Altersito
 - Github
 - Gitkraken (per un uso più lineare e strutturato di Git)
+- Hipolabs (https://github.com/toddmotto/public-apis/ per l'API pubblica usata)
