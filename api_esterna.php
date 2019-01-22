@@ -3,7 +3,7 @@
 //includiamo file di configurazione
 require 'config.php';
 //impostiamo informazioni header richiesta HTTP
-header("Content-Type: text/plain; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 //inizializzazione della richiesta HTTP tramite CURL
 $url = 'http://universities.hipolabs.com/search?country=italy';
 $handle = curl_init($url);
